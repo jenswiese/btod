@@ -27,13 +27,8 @@ class Ascent
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
-
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Climber")
-     * @ORM\JoinColumn(name="route_id",referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="climber_id",referencedColumnName="id")
      */
     private $climber;
 

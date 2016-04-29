@@ -28,6 +28,7 @@ class Route
 
     /**
      * @ORM\Column(type="string")
+     * @var string
      */
     private $name;
 
@@ -44,15 +45,64 @@ class Route
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes")
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+     * @var Section
      */
     private $section;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Setter", inversedBy="routes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes")
      * @ORM\JoinColumn(name="setter_id", referencedColumnName="id")
+     * @var User
      */
     private $setter;
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return Section
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    /**
+     * @param Section $section
+     */
+    public function setSection(Section $section)
+    {
+        $this->section = $section;
+    }
+
+    /**
+     * @return User
+     */
+    public function getSetter()
+    {
+        return $this->setter;
+    }
+
+    /**
+     * @param User $setter
+     */
+    public function setSetter(User $setter)
+    {
+        $this->setter = $setter;
+    }
 
 
 //- Name

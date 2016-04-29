@@ -11,6 +11,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,7 @@ class Section
 
     /**
      * @ORM\Column(type="string")
+     * @var string
      */
     private $name;
 
@@ -35,12 +37,66 @@ class Section
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Spot", inversedBy="sections")
      * @ORM\JoinColumn(name="spot_id", referencedColumnName="id")
+     * @var Spot
      */
     private $spot;
 
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Route", mappedBy="section")
+     * @var Route[]
      */
     private $routes;
+
+
+    public function __construct()
+    {
+        $this->routes = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return Spot
+     */
+    public function getSpot()
+    {
+        return $this->spot;
+    }
+
+    /**
+     * @param Spot $spot
+     */
+    public function setSpot($spot)
+    {
+        $this->spot = $spot;
+    }
+
+    /**
+     * @return Route[]
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+
+    public function addRoute(Route $route)
+    {
+        $this->routes->add($route);
+    }
+
 }

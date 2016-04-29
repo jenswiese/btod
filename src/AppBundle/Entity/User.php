@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
-class Climber
+class User
 {
     /**
      * @ORM\Column(type="integer")
@@ -28,6 +28,35 @@ class Climber
 
     /**
      * @ORM\Column(type="string")
+     * @var string
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $loginname;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
 }

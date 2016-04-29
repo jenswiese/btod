@@ -29,11 +29,13 @@ class Spot
 
     /**
      * @ORM\Column(type="string")
+     * @var string
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Section", mappedBy="spot")
+     * @var Section[]
      */
     private $sections;
 
@@ -42,4 +44,36 @@ class Spot
     {
         $this->sections = new ArrayCollection();
     }
+
+    /**
+     * @return Section[]
+     */
+    public function getSections()
+    {
+        return $this->sections;
+    }
+
+    public function addSection(Section $section)
+    {
+        $this->sections->add($section);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
+
 }

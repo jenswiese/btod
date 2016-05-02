@@ -33,24 +33,24 @@ class Route
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deletedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes", cascade={"persist"})
      * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
      * @var Section
      */
     private $section;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes", cascade={"persist"})
      * @ORM\JoinColumn(name="setter_id", referencedColumnName="id")
      * @var User
      */

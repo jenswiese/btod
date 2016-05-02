@@ -2,17 +2,14 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Route;
+use AppBundle\Entity\Route as ClimbingRoute;
 use AppBundle\Entity\Section;
 use AppBundle\Entity\Spot;
 use AppBundle\Entity\User;
-use Doctrine\Common\Annotations\Annotation\IgnoreAnnotation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
-/***
- * @IgnoreAnnotation("Route")
- */
 class DefaultController extends Controller
 {
     /**
@@ -20,22 +17,23 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $spot = new Spot();
-        $spot->setName('Boulder-Point');
-
-        $section = new Section();
-        $section->setName('Sektion 11');
-        $section->setSpot($spot);
-
-        $setter = new User();
-        $setter->setName('Jonas');
-
-//        $route = new Route();
+//        $spot = new Spot();
+//        $spot->setName('Boulder-Point');
+//
+//        $section = new Section();
+//        $section->setName('Sektion 11');
+//        $section->setSpot($spot);
+//
+//        $setter = new User();
+//        $setter->setName('Jonas');
+//        $setter->setLoginname('dwdw');
+//        $setter->setPassword('fewfew');
+//
+//        $route = new ClimbingRoute();
 //        $route->setName('23');
 //        $route->setSetter($setter);
 //        $route->setSection($section);
-
-
+//
 //        $this->getDoctrine()->getManager()->persist($route);
 //        $this->getDoctrine()->getManager()->flush();
 

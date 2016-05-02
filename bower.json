@@ -1,0 +1,19 @@
+{
+  "name": "btod",
+  "homepage": "https://github.com/jenswiese/btod",
+  "description": "Indoor Climbing Database",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

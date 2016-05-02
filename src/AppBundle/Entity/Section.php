@@ -35,7 +35,7 @@ class Section
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Spot", inversedBy="sections")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Spot", inversedBy="sections", cascade={"persist"})
      * @ORM\JoinColumn(name="spot_id", referencedColumnName="id")
      * @var Spot
      */
@@ -43,7 +43,7 @@ class Section
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Route", mappedBy="section")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Route", mappedBy="section", cascade={"persist"})
      * @var Route[]
      */
     private $routes;

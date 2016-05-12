@@ -33,8 +33,8 @@ class Ascent
     private $climber;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Route")
-     * @ORM\JoinColumn(name="route_id",referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ClimbingRoute")
+     * @ORM\JoinColumn(name="climbing_route_id",referencedColumnName="id")
      */
     private $route;
 

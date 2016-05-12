@@ -43,8 +43,8 @@ class Section
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Route", mappedBy="section", cascade={"persist"})
-     * @var Route[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ClimbingRoute", mappedBy="section", cascade={"persist"})
+     * @var ClimbingRoute[]
      */
     private $routes;
 
@@ -87,14 +87,14 @@ class Section
     }
 
     /**
-     * @return Route[]
+     * @return ClimbingRoute[]
      */
     public function getRoutes()
     {
         return $this->routes;
     }
 
-    public function addRoute(Route $route)
+    public function addRoute(ClimbingRoute $route)
     {
         $this->routes->add($route);
     }

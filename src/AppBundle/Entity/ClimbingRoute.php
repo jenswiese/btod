@@ -12,12 +12,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="route")
  */
-class Route
+class ClimbingRoute
 {
     /**
      * @ORM\Column(type="integer")
@@ -27,34 +28,41 @@ class Route
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      * @var string
      */
     private $name;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $deletedAt;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes", cascade={"persist"})
-     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
-     * @var Section
-     */
-    private $section;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes", cascade={"persist"})
-     * @ORM\JoinColumn(name="setter_id", referencedColumnName="id")
-     * @var User
-     */
-    private $setter;
+//    /**
+//     * @Assert\DateTime()
+//     * @ORM\Column(type="datetime", nullable=true)
+//     */
+//    private $deletedAt;
+//
+//    /**
+//     * @Assert\NotBlank()
+//     * @Assert\Type('Section')
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes", cascade={"persist"})
+//     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+//     * @var Section
+//     */
+//    private $section;
+//
+//    /**
+//     * @Assert\Type('User')
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes", cascade={"persist"})
+//     * @ORM\JoinColumn(name="setter_id", referencedColumnName="id")
+//     * @var User
+//     */
+//    private $setter;
 
     /**
      * @return string
@@ -70,6 +78,22 @@ class Route
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 
     /**

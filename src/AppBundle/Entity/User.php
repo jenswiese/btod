@@ -12,6 +12,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -28,19 +29,11 @@ class User
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="100")
      * @var string
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $loginname;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $password;
 
     /**
      * @return string
@@ -57,37 +50,4 @@ class User
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getLoginname()
-    {
-        return $this->loginname;
-    }
-
-    /**
-     * @param mixed $loginname
-     */
-    public function setLoginname($loginname)
-    {
-        $this->loginname = $loginname;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
 }

@@ -13,6 +13,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -29,6 +30,8 @@ class Section
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="50")
      * @var string
      */
     private $name;
@@ -37,6 +40,7 @@ class Section
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Spot", inversedBy="sections", cascade={"persist"})
      * @ORM\JoinColumn(name="spot_id", referencedColumnName="id")
+     * @Assert\Type(type="Spot")
      * @var Spot
      */
     private $spot;

@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('climbingroute_show', { 'id': climbingRoute.id }) }}">{{ climbingRoute.id }}</a></td>
                 <td>{{ climbingRoute.name }}</td>
-                <td>{% if climbingRoute.createdAt %}{{ climbingRoute.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if climbingRoute.createdAt %}{{ climbingRoute.createdAt|date('Y-m-d') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

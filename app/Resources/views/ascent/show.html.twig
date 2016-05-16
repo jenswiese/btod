@@ -1,31 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>ClimbingRoute</h1>
+    <h1>Ascent</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ climbingRoute.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ climbingRoute.name }}</td>
+                <td>{{ ascent.id }}</td>
             </tr>
             <tr>
                 <th>Createdat</th>
-                <td>{% if climbingRoute.createdAt %}{{ climbingRoute.createdAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ascent.createdAt %}{{ ascent.createdAt|date('Y-m-d') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('climbingroute_index') }}">Back to the list</a>
+            <a href="{{ path('ascent_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('climbingroute_edit', { 'id': climbingRoute.id }) }}">Edit</a>
+            <a href="{{ path('ascent_edit', { 'id': ascent.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

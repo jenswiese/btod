@@ -1,5 +1,5 @@
 {
-    "name": "vagrant/btod",
+    "name": "jenswiese/btod",
     "license": "proprietary",
     "type": "project",
     "autoload": {

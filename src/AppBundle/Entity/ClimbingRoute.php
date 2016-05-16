@@ -16,7 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="route")
+ * @ORM\Table(name="climbing_route")
+ * @ORM\HasLifecycleCallbacks()
  */
 class ClimbingRoute
 {
@@ -37,32 +38,33 @@ class ClimbingRoute
     /**
      * @Assert\NotBlank()
      * @Assert\DateTime()
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $createdAt;
 
-//    /**
-//     * @Assert\DateTime()
-//     * @ORM\Column(type="datetime", nullable=true)
-//     */
-//    private $deletedAt;
-//
-//    /**
-//     * @Assert\NotBlank()
-//     * @Assert\Type('Section')
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Section", inversedBy="routes", cascade={"persist"})
-//     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
-//     * @var Section
-//     */
-//    private $section;
-//
-//    /**
-//     * @Assert\Type('User')
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="routes", cascade={"persist"})
-//     * @ORM\JoinColumn(name="setter_id", referencedColumnName="id")
-//     * @var User
-//     */
-//    private $setter;
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->setCreatedAt(new \DateTime("now"));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return string
@@ -89,50 +91,10 @@ class ClimbingRoute
     }
 
     /**
-     * @param mixed $createdAt
+     * @param \DateTime $createdAt
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
-
-    /**
-     * @return Section
-     */
-    public function getSection()
-    {
-        return $this->section;
-    }
-
-    /**
-     * @param Section $section
-     */
-    public function setSection(Section $section)
-    {
-        $this->section = $section;
-    }
-
-    /**
-     * @return User
-     */
-    public function getSetter()
-    {
-        return $this->setter;
-    }
-
-    /**
-     * @param User $setter
-     */
-    public function setSetter(User $setter)
-    {
-        $this->setter = $setter;
-    }
-
-
-//- Name
-//- Ort (Sektor 1)
-//- Schwierigkeitsgrad (weiß)
-//- Top out (ja/nein)
-//- Setter (z.B. Jonas)
-//- type (dynamic, static)
 }

@@ -12,10 +12,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="ascent")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ascent
 {
@@ -27,19 +29,73 @@ class Ascent
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
-     * @ORM\JoinColumn(name="climber_id",referencedColumnName="id")
-     */
-    private $climber;
-
-    /**
+     * @Assert\Type(type="AppBundle\Entity\ClimbingRoute")
+     * @Assert\Valid()
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\ClimbingRoute")
-     * @ORM\JoinColumn(name="climbing_route_id",referencedColumnName="id")
+     * @ORM\JoinColumn(name="climbing_route_id", referencedColumnName="id")
      */
-    private $route;
+    private $climbingRoute;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $createdAt;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->setCreatedAt(new \DateTime("now"));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClimbingRoute()
+    {
+        return $this->climbingRoute;
+    }
+
+    /**
+     * @param mixed $climbingRoute
+     */
+    public function setClimbingRoute($climbingRoute)
+    {
+        $this->climbingRoute = $climbingRoute;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
 }

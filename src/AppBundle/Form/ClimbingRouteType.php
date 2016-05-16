@@ -3,10 +3,11 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SpotType extends AbstractType
+class ClimbingRouteType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,6 +17,11 @@ class SpotType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('createdAt', DateType::class, array(
+
+
+
+            ))
         ;
     }
     
@@ -25,7 +31,7 @@ class SpotType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Spot',
+            'data_class' => 'AppBundle\Entity\ClimbingRoute',
             'csrf_protection' => false,
         ));
     }
